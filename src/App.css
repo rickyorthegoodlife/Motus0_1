@@ -1,6 +1,6 @@
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,36 +10,39 @@ body {
 
 .game-container {
   text-align: center;
-  background-color: #ffffff;
+  background: #ffffff;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 400px;
+  position: relative;
+  overflow: hidden;
 }
 
 h1 {
   color: #333;
   margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .score {
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #555;
 }
 
 .grid {
-  display: grid;
-  grid-template-rows: repeat(6, 1fr);
-  gap: 10px;
-  margin-bottom: 20px;
+  position: relative;
+  margin-bottom: 30px; /* Added space between grid and input */
 }
 
 .row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(6, 50px);
+  justify-content: center;
+  gap: 5px;
 }
 
 .cell {
@@ -48,22 +51,29 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e0e0e0;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 24px;
   font-weight: bold;
-  color: #333;
-  transition: background-color 0.3s;
+  color: white;
+  transition: background-color 0.3s, transform 0.2s;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cell:hover {
+  transform: scale(1.05);
 }
 
 .cell.correct {
-  background-color: #ff6b6b;
+  background: linear-gradient(135deg, #ff6b6b, #ff416c);
   color: white;
 }
 
 .cell.present {
-  background-color: #ffe66d;
+  background: linear-gradient(135deg, #ffe66d, #ffcc00);
   color: black;
+  border-radius: 50%;
 }
 
 input[type='text'] {
@@ -73,6 +83,12 @@ input[type='text'] {
   border: 2px solid #ddd;
   border-radius: 8px;
   width: calc(100% - 24px);
+  transition: border-color 0.3s;
+}
+
+input[type='text']:focus {
+  border-color: #6a11cb;
+  outline: none;
 }
 
 button {
@@ -81,14 +97,16 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 8px;
-  background-color: #4a90e2;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: white;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
   margin: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-  background-color: #357ab8;
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  transform: translateY(-2px);
 }
 
 .popup {
@@ -110,4 +128,16 @@ button:hover {
   text-align: center;
   color: black;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
